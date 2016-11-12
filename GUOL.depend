@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1478992142 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\baresrest.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478993614 
+
+1478992142 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\filmes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478469865 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\cambio.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478992042 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478646441 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\trataarquivos.c
+	<stdio.h>
+	<stdlib.h>
+
+1478993614 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\cambiomoeda.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478990966 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/baresRest.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991990 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/cambioMoeda.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991187 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/filmes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991220 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991382 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/trataArquivos.c
+	<stdio.h>
+	<stdlib.h>
+
+1478992878 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/baresRest.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991990 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/cambioMoeda.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991187 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/filmes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991220 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<unistd.h>
+
+1478991382 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/trataArquivos.c
+	<stdio.h>
+	<stdlib.h>
+

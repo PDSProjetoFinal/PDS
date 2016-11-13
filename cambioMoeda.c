@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+
 #define VERDADEIRO 1
 #define FALSO 0
 
@@ -63,7 +65,8 @@ int menuCambio() {
     printf("0 - Voltar ao menu anterior\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    scanf("%d", &opcao);
+    opcao = getche();
+    //scanf("%d", &opcao);
     return opcao;
 }
 
@@ -81,7 +84,8 @@ int menuListarMoeda() {
     printf("0 - Voltar ao menu anterior\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    scanf("%d", &opcao);
+    opcao = getche();
+    //scanf("%d", &opcao);
     return opcao;
 }
 
@@ -192,7 +196,7 @@ void cadastrarMoeda() {
 
         if (existeMoeda(moeda) != NULL) {
             // Moeda ja existe e nao pode ser cadastrada novamente
-            printf("\nMoeda %s ja existe. Nao foi possivel incluir.\n", moeda->nomeMoeda);
+            printf("\nMoeda %s ja existe. Nao foi possivel incluir.", moeda->nomeMoeda);
 
         } else {
             // Gravar no arquivo
@@ -206,9 +210,10 @@ void cadastrarMoeda() {
             printf("\nMoeda '%s' incluida\n", moeda->nomeMoeda);
         }
     } else {
-        printf("\nNao foi possivel incluir a moeda %s \n", moeda->nomeMoeda);
+        printf("\nNao foi possivel incluir a moeda %s", moeda->nomeMoeda);
     }
     LIMPA_BUFFER;
+    printf("\n\nPressione enter para retornar");
     getchar();
 }
 
@@ -233,8 +238,9 @@ void alterarMoeda() {
     moeda = existeMoeda(moeda);
     if (moeda == NULL) {
         // Moeda ainda nao existe
-        printf("\nMoeda nao encontrada. Nao foi possivel alterar.\n");
+        printf("\nMoeda nao encontrada. Nao foi possivel alterar.");
         LIMPA_BUFFER;
+        printf("\n\nPressione enter para retornar");
         getchar();
         return;
     }
@@ -265,11 +271,12 @@ void alterarMoeda() {
         };
 
         // Mensagem de sucesso
-        printf("\nMoeda '%s' alterada\n", moeda->nomeMoeda);
+        printf("\nMoeda '%s' alterada", moeda->nomeMoeda);
     } else {
-        printf("\nNao foi possivel alterar a moeda %s \n", moeda->nomeMoeda);
+        printf("\nNao foi possivel alterar a moeda %s ", moeda->nomeMoeda);
     }
     LIMPA_BUFFER;
+    printf("\n\nPressione enter para retornar");
     getchar();
 }
 
@@ -295,6 +302,7 @@ void excluirMoeda() {
     if (moeda == NULL) {
         // Moeda ainda nao existe
         printf("\nMoeda nao encontrada. Nao foi possivel excluir.\n");
+        printf("\n\nPressione enter para retornar");
         getchar();
         return;
     }
@@ -322,6 +330,7 @@ void excluirMoeda() {
 
         // Mensagem de sucesso
         printf("\nMoeda '%s' excluida\n", moeda->nomeMoeda);
+        printf("\n\nPressione enter para retornar");
         LIMPA_BUFFER;
         getchar();
     }
@@ -416,7 +425,7 @@ void exibirMoeda(tMoeda * moeda, char titulo[40]) {
     }
 
     // Aguarda comando do usuario para retornar
-    printf("\n\nPressione uma tecla para voltar");
+    printf("\n\nPressione enter para retornar");
     LIMPA_BUFFER;
     getchar();
     return;
@@ -454,19 +463,20 @@ void listarMoeda() {
     do {
         opcao = menuListarMoeda();
         switch (opcao){
-            case 1:
+            case '1':
                 listarMoedaOrdem(1);  // Alfabetica
                 break;
-            case 2:
+            case '2':
                 listarMoedaOrdem(2);  // Variacao
                 break;
-            case 0:
+            case '0':
                 return;
                 break;
             default:
-                printf("\nOpcao inexistente!\n\n");
+                printf("\n\nOpcao inexistente!\n");
+                printf("\nPressione uma tecla para tentar novamente.\n");
                 LIMPA_BUFFER;
-                getchar();
+                getche();
         }
     } while (1);
 }
@@ -508,28 +518,29 @@ void mainCambio() {
     do {
         opcao = menuCambio();
         switch (opcao){
-            case 1:
+            case '1':
                 cadastrarMoeda();
                 break;
-            case 2:
+            case '2':
                 pesquisarMoeda();
                 break;
-            case 3:
+            case '3':
                 listarMoeda();
                 break;
-            case 4:
+            case '4':
                 alterarMoeda();
                 break;
-           case 5:
+           case '5':
                 excluirMoeda();
                 break;
-            case 0:
+            case '0':
                 return;
                 break;
             default:
-                printf("\nOpcao inexistente. Tente novamente!\n\n");
+                printf("\n\nOpcao inexistente!\n");
+                printf("\nPressione uma tecla para tentar novamente.\n");
                 LIMPA_BUFFER;
-                getchar();
+                getche();
         }
     } while (1);
 

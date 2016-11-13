@@ -27,7 +27,8 @@ int menuFilmes() {
     printf("0 - Voltar ao menu anterior\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    scanf("%d", &opcao);
+    opcao = getche();
+    //scanf("%d", &opcao);
     return opcao;
 }
 
@@ -36,22 +37,23 @@ void mainFilmes() {
     do {
         opcao = menuFilmes();
         switch (opcao){
-            case 1:
+            case '1':
                 ///O que fazer;
                 break;
-            case 2:
+            case '2':
                 /// O que fazer;
                 break;
-            case 3:
+            case '3':
                 /// O que fazer;
                 break;
-            case 0:
+            case '0':
                 return;
                 break;
             default:
-                printf("\nOpcao inexistente. Tente novamente!\n\n");
+                printf("\n\nOpcao inexistente!\n");
+                printf("\nPressione uma tecla para tentar novamente.\n");
                 LIMPA_BUFFER;
-                getchar();
+                getche();
         }
     } while (1);
 

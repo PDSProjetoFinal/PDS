@@ -1,13 +1,11 @@
 # depslib dependency file v1.0
-1478992142 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\baresrest.c
+1478565818 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\baresrest.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478993614 
-
-1478992142 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\filmes.c
+1478565835 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\filmes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -19,7 +17,7 @@
 	<windows.h>
 	<unistd.h>
 
-1478992042 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\main.c
+1478565835 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -29,65 +27,37 @@
 	<stdio.h>
 	<stdlib.h>
 
-1478993614 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\cambiomoeda.c
+1478646094 source:d:\mclermen\desenv\c_testes\pds_sistema\guol\cambiomoeda.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478990966 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/baresRest.c
+1479158804 source:c:\users\adm\desktop\guol\guol\baresrest.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478991990 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/cambioMoeda.c
+1479149636 source:c:\users\adm\desktop\guol\guol\cambiomoeda.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478991187 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/filmes.c
+1478625694 source:c:\users\adm\desktop\guol\guol\filmes.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478991220 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/main.c
+1479158581 source:c:\users\adm\desktop\guol\guol\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
 	<unistd.h>
 
-1478991382 source:/home/lucas/Documentos/UnB2016_2/PDS_André Barros/ProjetoFinal_Code/GUOL/trataArquivos.c
-	<stdio.h>
-	<stdlib.h>
-
-1478992878 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/baresRest.c
-	<stdio.h>
-	<stdlib.h>
-	<windows.h>
-	<unistd.h>
-
-1478991990 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/cambioMoeda.c
-	<stdio.h>
-	<stdlib.h>
-	<windows.h>
-	<unistd.h>
-
-1478991187 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/filmes.c
-	<stdio.h>
-	<stdlib.h>
-	<windows.h>
-	<unistd.h>
-
-1478991220 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/main.c
-	<stdio.h>
-	<stdlib.h>
-	<windows.h>
-	<unistd.h>
-
-1478991382 source:/home/lucas/Documentos/UnB2016_2/PDS_Andre/ProjetoFinal_Code/GUOL/trataArquivos.c
+1478625694 source:c:\users\adm\desktop\guol\guol\trataarquivos.c
 	<stdio.h>
 	<stdlib.h>
 

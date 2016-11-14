@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
-
 //Se o sistema for Windows adiciona determinada biblioteca, e definindo comandos de limpar e esperar
 #ifdef WIN32
     #include <windows.h>
@@ -18,14 +16,14 @@
 // Declaracao de funcoes externas
 void mainCambio();
 void mainFilmes();
-void mainBaresRest();
+void mainBares();
 
 
 /*
 *  Exibe as opções do menu principal
 */
-char menuPrincipal() {
-    char opcao;
+int menuPrincipal() {
+    int opcao;
     LIMPA_TELA;
     printf("|----------------------------|\n");
     printf("|  GUOL - Guia de recursos   |\n");
@@ -37,32 +35,29 @@ char menuPrincipal() {
     printf("0 - Sair\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    opcao = getche();
-    //scanf("%d", &opcao);
+    scanf("%d", &opcao);
     return opcao;
 }
 
 int main() {
-    char opcao;
+    int opcao;
     do {
         opcao = menuPrincipal();
         switch (opcao){
-            case '1':
+            case 1:
                 mainCambio();
                 break;
-            case '2':
-                mainBaresRest();
+            case 2:
+                mainBares();
                 break;
-            case '3':
+            case 3:
                 mainFilmes();
                 break;
-            case '0':
+            case 0:
                 exit(0);
             default:
-                printf("\n\nOpcao inexistente!\n");
-                printf("\nPressione uma tecla para tentar novamente.\n");
-                LIMPA_BUFFER;
-                getche();
+                printf("\nAs opcoes disponiveis são 1, 2, 3 ou 0!\n\n");
+                system("pause");
         }
     } while (1);
     return 0;

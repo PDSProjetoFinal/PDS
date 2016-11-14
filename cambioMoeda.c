@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
-
 #define VERDADEIRO 1
 #define FALSO 0
 
@@ -25,7 +23,6 @@ typedef struct MOEDA {
     double pcVariacao;
     double valorMinimo;
     double valorMaximo;
-    int    icExcluido;
     struct MOEDA *proximo;
 } tMoeda;
 
@@ -65,8 +62,7 @@ int menuCambio() {
     printf("0 - Voltar ao menu anterior\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    opcao = getche();
-    //scanf("%d", &opcao);
+    scanf("%d", &opcao);
     return opcao;
 }
 
@@ -84,8 +80,7 @@ int menuListarMoeda() {
     printf("0 - Voltar ao menu anterior\n");
     printf("\nInforme o numero da operacao desejada: ");
     LIMPA_BUFFER;
-    opcao = getche();
-    //scanf("%d", &opcao);
+    scanf("%d", &opcao);
     return opcao;
 }
 
@@ -97,7 +92,7 @@ tMoeda * moedaAnterior(tMoeda* lista, tMoeda* novo, int ordem) {
     tMoeda * aux = NULL;
     while (lista != NULL) {
         if (ordem == 1) { // Alfabetica
-            if (strcasecmp(lista->nomeMoeda, novo->nomeMoeda) > 0) {
+            if (strcmp(lista->nomeMoeda, novo->nomeMoeda) > 0) {
                 return aux;
             }
         } else {         // Valor de variacao
@@ -119,7 +114,7 @@ int validaMoeda(tMoeda *moeda) {
     if (strcmp(moeda->nomeMoeda, "") == 0) {
         printf("O nome da moeda deve ser informado\n"); erros++; }
     if (moeda->nomeMoeda[0] < 65 || moeda->nomeMoeda[0] > 122 ) {
-        printf("O nome da moeda deve iniciar com uma letra:\n"); erros++; }
+        printf("O nome da moeda deve iniciar com uma letra: %d\n", moeda->nomeMoeda[0]); erros++; }
     if (moeda->valorMinimo > moeda->valorMaximo) {
         printf("Valor minimo deve ser menor ou igual ao maximo\n"); erros++; }
     if (moeda->valorMinimo > moeda->valorCompra) {
@@ -149,7 +144,7 @@ tMoeda * existeMoeda(tMoeda *pesquisar) {
         fread(moeda, sizeof(tMoeda), 1, arquivoCambio);
         posicao = posicao + sizeof(tMoeda);
         if (!feof(arquivoCambio)) {
-            if (moeda->icExcluido == FALSO && strcasecmp(moeda->nomeMoeda, pesquisar->nomeMoeda) == 0) {
+            if (strcmp(moeda->nomeMoeda, pesquisar->nomeMoeda) == 0) {
                 return moeda;
             }
         }
@@ -166,7 +161,6 @@ void cadastrarMoeda() {
     tMoeda * moeda = (tMoeda *) malloc(sizeof(tMoeda));
     strcpy(moeda->nomeMoeda, "                        ");
     moeda->proximo = NULL;
-    moeda->icExcluido = FALSO;
 
     // Imprime o cabecalho
     LIMPA_TELA;
@@ -196,7 +190,7 @@ void cadastrarMoeda() {
 
         if (existeMoeda(moeda) != NULL) {
             // Moeda ja existe e nao pode ser cadastrada novamente
-            printf("\nMoeda %s ja existe. Nao foi possivel incluir.", moeda->nomeMoeda);
+            printf("\nMoeda %s ja existe. Nao foi possivel incluir.\n", moeda->nomeMoeda);
 
         } else {
             // Gravar no arquivo
@@ -210,11 +204,9 @@ void cadastrarMoeda() {
             printf("\nMoeda '%s' incluida\n", moeda->nomeMoeda);
         }
     } else {
-        printf("\nNao foi possivel incluir a moeda %s", moeda->nomeMoeda);
+        printf("\nNao foi possivel incluir a moeda %s \n", moeda->nomeMoeda);
     }
-    LIMPA_BUFFER;
-    printf("\n\nPressione enter para retornar");
-    getchar();
+    system("pause");
 }
 
 /*
@@ -238,10 +230,8 @@ void alterarMoeda() {
     moeda = existeMoeda(moeda);
     if (moeda == NULL) {
         // Moeda ainda nao existe
-        printf("\nMoeda nao encontrada. Nao foi possivel alterar.");
-        LIMPA_BUFFER;
-        printf("\n\nPressione enter para retornar");
-        getchar();
+        printf("\nMoeda nao encontrada. Nao foi possivel alterar.\n");
+        system("pause");
         return;
     }
 
@@ -271,69 +261,11 @@ void alterarMoeda() {
         };
 
         // Mensagem de sucesso
-        printf("\nMoeda '%s' alterada", moeda->nomeMoeda);
+        printf("\nMoeda '%s' alterada\n", moeda->nomeMoeda);
     } else {
-        printf("\nNao foi possivel alterar a moeda %s ", moeda->nomeMoeda);
+        printf("\nNao foi possivel alterar a moeda %s \n", moeda->nomeMoeda);
     }
-    LIMPA_BUFFER;
-    printf("\n\nPressione enter para retornar");
-    getchar();
-}
-
-/*
- * Excluir moeda
- */
-void excluirMoeda() {
-
-    // Aloca espaco de memoria
-    tMoeda * moeda = (tMoeda *) malloc(sizeof(tMoeda));
-
-    // Imprime o cabecalho
-    LIMPA_TELA;
-    imprimeCabecalhoCambio();
-    printf("Excluir moeda\n");
-
-    //Le os dados da moeda
-    printf("\nNome da moeda: ");
-    LIMPA_BUFFER;
-    scanf("%[a-z A-Z]s", moeda->nomeMoeda);
-
-    moeda = existeMoeda(moeda);
-    if (moeda == NULL) {
-        // Moeda ainda nao existe
-        printf("\nMoeda nao encontrada. Nao foi possivel excluir.\n");
-        printf("\n\nPressione enter para retornar");
-        getchar();
-        return;
-    }
-
-    // Solicita confirmacao
-    printf("\nConfirma a exclusao? (1 para confirmar, qualquer outro para nao confirmar): ");
-    int confirmar;
-    LIMPA_BUFFER;
-    scanf("%d", &confirmar);
-
-    // Efetua as validacoes e salva
-    if (confirmar == 1) {
-
-        // Marca o registro como excluido
-        moeda->icExcluido = VERDADEIRO;
-
-        // Posiciona o ponteiro para gravar
-        fseek(arquivoCambio, posicao - sizeof(tMoeda), SEEK_SET );
-
-        // Gravar no arquivo
-        if (fwrite(moeda, sizeof(tMoeda), 1, arquivoCambio) != 1) {  // Grava e verifica se houve erro
-            printf("\nErro ao alterar registro\n");
-            exit(1);
-        };
-
-        // Mensagem de sucesso
-        printf("\nMoeda '%s' excluida\n", moeda->nomeMoeda);
-        printf("\n\nPressione enter para retornar");
-        LIMPA_BUFFER;
-        getchar();
-    }
+    system("pause");
 }
 
 /*
@@ -353,17 +285,13 @@ tMoeda * carregarMoedaOrdem(int ordem) {
         tMoeda * moeda = (tMoeda *) malloc(sizeof(tMoeda));
         fread(moeda, sizeof(tMoeda), 1, arquivoCambio);
         if (!feof(arquivoCambio)) {
-            if (moeda->icExcluido == FALSO) {
-                aux = moedaAnterior(inicio, moeda, ordem);
-                if (aux == NULL) {
-                    moeda->proximo = inicio;
-                    inicio = moeda;
-                } else {
-                    moeda->proximo = aux->proximo;
-                    aux->proximo= moeda;
-                }
+            aux = moedaAnterior(inicio, moeda, ordem);
+            if (aux == NULL) {
+                moeda->proximo = inicio;
+                inicio = moeda;
             } else {
-                free(moeda);
+                moeda->proximo = aux->proximo;
+                aux->proximo= moeda;
             }
         }
     }
@@ -386,8 +314,7 @@ tMoeda * carregarMoedaNome(char nomePesquisa[]) {
         // Le um registro do arquivoCambio e armazena na variavel moeda
         fread(moeda, sizeof(tMoeda), 1, arquivoCambio);
         if (!feof(arquivoCambio)) {
-            if (moeda->icExcluido == FALSO && strcasecmp(moeda->nomeMoeda, nomePesquisa) == 0) {
-                moeda->proximo = NULL; // O proximo deve ser nulo porque recuperou apenas uma moeda
+            if (strcmp(moeda->nomeMoeda, nomePesquisa) == 0) {
                 return moeda;
             }
         }
@@ -425,9 +352,8 @@ void exibirMoeda(tMoeda * moeda, char titulo[40]) {
     }
 
     // Aguarda comando do usuario para retornar
-    printf("\n\nPressione enter para retornar");
-    LIMPA_BUFFER;
-    getchar();
+    printf("\n");
+    system("pause");
     return;
 }
 
@@ -463,20 +389,18 @@ void listarMoeda() {
     do {
         opcao = menuListarMoeda();
         switch (opcao){
-            case '1':
-                listarMoedaOrdem(1);  // Alfabetica
+            case 1:
+                listarMoedaOrdem(1);
                 break;
-            case '2':
-                listarMoedaOrdem(2);  // Variacao
+            case 2:
+                listarMoedaOrdem(2);
                 break;
-            case '0':
+            case 0:
                 return;
                 break;
             default:
-                printf("\n\nOpcao inexistente!\n");
-                printf("\nPressione uma tecla para tentar novamente.\n");
-                LIMPA_BUFFER;
-                getche();
+                printf("\nOpcao inexistente!\n\n");
+                system("pause");
         }
     } while (1);
 }
@@ -518,29 +442,24 @@ void mainCambio() {
     do {
         opcao = menuCambio();
         switch (opcao){
-            case '1':
+            case 1:
                 cadastrarMoeda();
                 break;
-            case '2':
+            case 2:
                 pesquisarMoeda();
                 break;
-            case '3':
+            case 3:
                 listarMoeda();
                 break;
-            case '4':
+            case 4:
                 alterarMoeda();
                 break;
-           case '5':
-                excluirMoeda();
-                break;
-            case '0':
+            case 0:
                 return;
                 break;
             default:
-                printf("\n\nOpcao inexistente!\n");
-                printf("\nPressione uma tecla para tentar novamente.\n");
-                LIMPA_BUFFER;
-                getche();
+                printf("\nOpcao inexistente!\n\n");
+                system("pause");
         }
     } while (1);
 
